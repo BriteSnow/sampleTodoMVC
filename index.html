@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>TodoMVC App (with brite.js)</title>
+
+    <!-- Best-Practice: Could have done without it, but just to show brite.js best practice, we include bootstrap -->
+    <!--
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" />
+    -->
+    
+    <link rel="stylesheet" href="assets/base.css" />
+
+    <!-- This is the only hard dependency for brite.js -->
+    <script type="text/javascript" src="js/jquery.min.js" ></script>
+
+    <!-- Because we use jcruncherEx.jar to compile the handlebars template, only need the runtime
+    (4kb rather than 34kb Yeah!) -->
+    <script type="text/javascript" src="js/handlebars-1.0.rc.1.min.js"></script>
+
+    <!-- Best-Practice: Should be "js/brite.min.js" but for this sample code we use the snapshot to test ahead -->
+    <script type="text/javascript" src="js/brite-snapshot.js" ></script>
+    <script type="text/javascript" src="js/brite.InMemoryDaoHandler.js" ></script>
+
+    <!-- Best-Practice: Application always should have a main javascript file and a
+    default namespace for it's variables and functions
+    (use a single namespace for your app properties, function, modules and such).
+
+    main.js will initialize the application as well by calling the first brite.display...
+    this way, the code is ChromeApp compatible (No <script tags in .html for ChromeApp)
+    -->
+    <script "text/javascript" src="js/app.js" ></script>
+
+  </head>
+
+  <body>
+
+
+    
+    <!-- --------- TodoView Template --------- -->
+    <script id="tmpl-TodoView" type="text/html">
+      <div class="TodoView">
+        <section id="todoapp">
+          <header id="header">
+            <h1>todos</h1>
+            <input id="new-todo" placeholder="What needs to be done?" autofocus>
+          </header>
+          <section id="main">
+            <input id="toggle-all" type="checkbox">
+            <label for="toggle-all">Mark all as complete</label>
+            <div class="taskListViewCtn"></div>
+          </section>
+          <footer id="footer">
+            <span id="todo-count"></span>
+            <button id="clear-completed">Clear completed</button>
+          </footer>
+        </section>
+        <footer id="info">
+          <p>Double-click to edit a todo</p>
+          <p>App design &amp; styles from todoMVC</p>
+          <p>Created by <a href="http://www.jeremychone.com/">Jeremy Chone</a></p>
+        </footer>
+      </div>
+    </script>
+    <!-- --------- /TodoView Template --------- -->    
+    
+    <!-- --------- TaskListView Template --------- -->
+    <script id="tmpl-TaskListView-todo-list" type="text/html">
+       <ul id="todo-list" class="TaskListView">
+         {{#each tasks}}
+         <li data-entity="Task" data-entity-id="{{id}}">
+          <div class="view">
+            <input class="toggle" type="checkbox" {{#if done}}checked="checked"{{/if}}>
+            <label>{{title}}</label>
+            <button class="destroy"></button>
+          </div>
+          <input class="edit" value="some">
+         </li>
+         {{/each}}
+       </ul>
+    </script>
+    <!-- --------- /TaskListView Template --------- -->
+    
+  </body>
+
+</html>
