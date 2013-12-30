@@ -18,10 +18,11 @@
 
     <!-- Because we use jcruncherEx.jar to compile the handlebars template, only need the runtime
     (4kb rather than 34kb Yeah!) -->
-    <script type="text/javascript" src="js/handlebars-1.0.rc.1.min.js"></script>
+    <script type="text/javascript" src="js/handlebars.min.js"></script>
 
     <!-- Best-Practice: Should be "js/brite.min.js" but for this sample code we use the snapshot to test ahead -->
-    <script type="text/javascript" src="js/brite.min.js" ></script>
+    <script type="text/javascript" src="js/brite.min.js"></script>
+
     <script type="text/javascript" src="js/brite.InMemoryDaoHandler.js" ></script>
 
     <!-- Best-Practice: Application always should have a main javascript file and a
@@ -36,16 +37,13 @@
   </head>
 
   <body>
-
-
-    
     <!-- --------- TodoView Template --------- -->
     <script id="tmpl-TodoView" type="text/html">
       <div class="TodoView">
         <section id="todoapp">
           <header id="header">
             <h1>todos</h1>
-            <input id="new-todo" placeholder="What needs to be done?" autofocus>
+            <input id="new-todo" placeholder="What needs to be done?">
           </header>
           <section id="main">
             <input id="toggle-all" type="checkbox">
@@ -84,5 +82,3 @@
     <!-- --------- /TaskListView Template --------- -->
     
   </body>
-
-</html>
