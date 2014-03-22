@@ -1,2 +1,6 @@
 .project
 build.xml
+
+# Ignore Sublime files
+*.sublime-project
+*.sublime-workspace
